@@ -10,12 +10,13 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('students', function (Blueprint $table) {
+        Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->integer('age');
-            $table->string('address');
+            $table->string('product_name')->unique();
+            $table->string('sub_name');
+            $table->string('description');
+            $table->decimal('price', 8, 2); // for precise price values
+            $table->string('photo', 255); // for storing image path/URL
             $table->timestamps();
         });
     }
@@ -25,6 +26,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('students');
+        Schema::dropIfExists('products');
     }
 };

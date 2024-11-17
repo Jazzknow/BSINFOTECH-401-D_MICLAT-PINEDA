@@ -1,19 +1,22 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\StudentController; // to use and connect this folder inside
+use App\Http\Controllers\ProductController; // to use and connect this folder inside
 
+Route::get('/', [ProductController::class, 'landing'])->name('products.landing');
 
-Route::get('/', [StudentController::class, 'index'])->name('students.index');
+Route::get('/view', [ProductController::class, 'view'])->name('products.view');
 
-Route::get('/create', [StudentController::class, 'create'])->name('students.create');
+Route::get('/index', [ProductController::class, 'index'])->name('products.index');
 
-Route::post('/store', [StudentController::class, 'store'])->name('students.store');
+Route::get('/create', [ProductController::class, 'create'])->name('products.create');
 
-Route::get('/{id}', [StudentController::class, 'show'])->name('students.show');
+Route::post('/store', [ProductController::class, 'store'])->name('products.store');
 
-Route::get('/{id}/edit', [StudentController::class, 'edit'])->name('students.edit');
+Route::get('/{id}', [ProductController::class, 'show'])->name('products.show');
 
-Route::put('/{id}', [StudentController::class, 'update'])->name('students.update');
+Route::get('/{id}/edit', [ProductController::class, 'edit'])->name('products.edit');
 
-Route::delete('/{id}', [StudentController::class, 'destroy'])->name('students.destroy');
+Route::put('/{id}', [ProductController::class, 'update'])->name('products.update');
+
+Route::delete('/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
